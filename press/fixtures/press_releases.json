@@ -1,0 +1,40 @@
+[
+  {
+    "model": "press.pressrelease",
+    "pk": 1,
+    "fields": {
+      "title": "Открытие нового корпуса на рынке Дордой",
+      "content": "<p>15 октября 2023 года состоялось торжественное открытие нового торгового корпуса...</p>",
+      "summary": "Ассоциация 'Дордой' объявляет о запуске нового торгового корпуса",
+      "image": "press_releases/dordoi_opening.jpg",
+      "market": "Дордой базар",
+      "type": "announcement",
+      "date_published": "2023-10-15T10:00:00Z",
+      "views": 1245,
+      "is_featured": true,
+      "contact_name": "Айгуль Сатыбалдиева",
+      "contact_position": "Пресс-секретарь",
+      "contact_phone": "+996 555 123 456",
+      "contact_email": "press@dordoi.kg"
+    }
+  },
+  {
+    "model": "press.pressrelease",
+    "pk": 2,
+    "fields": {
+      "title": "Итоги ежегодной выставки 'Товары Центральной Азии'",
+      "content": "<p>С 25 по 27 сентября 2023 года на территории Аламедин базара прошла ежегодная выставка...</p>",
+      "summary": "Более 500 участников и 10 000 посетителей приняли участие в крупнейшей региональной выставке",
+      "image": "press_releases/exhibition.jpg",
+      "market": "Аламедин базар",
+      "type": "event_results",
+      "date_published": "2023-09-28T09:00:00Z",
+      "views": 876,
+      "is_featured": true,
+      "contact_name": "Эркин Беков",
+      "contact_position": "Менеджер по PR",
+      "contact_phone": "+996 555 654 321",
+      "contact_email": "pr@dordoi.kg"
+    }
+  }
+]

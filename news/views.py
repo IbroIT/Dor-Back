@@ -1,17 +1,20 @@
-from rest_framework import viewsets
-from .models import News, NewsCategory
-from .serializers import NewsSerializer, NewsCategorySerializer
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework import generics
+from .models import News
+from .serializers import NewsSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
-class NewsViewSet(viewsets.ModelViewSet):
-    queryset = News.objects.all().order_by('-published_date')
+class FeaturedNewsList(generics.ListAPIView):
     serializer_class = NewsSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['category']
-    search_fields = ['title', 'content']
-    ordering_fields = ['published_date']
+    queryset = News.objects.filter(news_type='featured', is_active=True).order_by('-date_published')[:5]
 
-class NewsCategoryViewSet(viewsets.ModelViewSet):
-    queryset = NewsCategory.objects.all()
-    serializer_class = NewsCategorySerializer
+    def get_serializer_context(self):
+        return {'request': self.request}
+
+class NewsList(generics.ListAPIView):
+    serializer_class = NewsSerializer
+    queryset = News.objects.filter(is_active=True).order_by('-date_published')
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['news_type']
+
+    def get_serializer_context(self):
+        return {'request': self.request}

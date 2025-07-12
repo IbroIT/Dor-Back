@@ -1,14 +1,16 @@
 from rest_framework import serializers
-from .models import News, NewsCategory
-
-class NewsCategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NewsCategory
-        fields = ['id', 'name', 'slug']
+from .models import News
 
 class NewsSerializer(serializers.ModelSerializer):
-    category = NewsCategorySerializer()
-    
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = News
-        fields = ['id', 'title', 'slug', 'content', 'excerpt', 'category', 'published_date', 'image']
+        fields = ['id', 'title', 'short_description', 'content', 'image', 
+                 'news_type', 'date_published', 'slug', 'is_active']
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url)
+        return None
