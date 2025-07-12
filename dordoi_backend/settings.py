@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key')  # Задай S
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    ".onrender.com",
+    "https://dor-back.onrender.com",
     "dordoi-eta.vercel.app",
 ]
 
